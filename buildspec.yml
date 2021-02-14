@@ -6,11 +6,11 @@ phases:
     commands:
       - aws --version
       - REPOSITORY_URI=163011916086.dkr.ecr.us-east-1.amazonaws.com/sqlfiddle-tools-sql-split
-      - REPOSITORY_PUBLIC_LOGIN=163011916086.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_LOGIN=163011916086.dkr.ecr.us-east-1.amazonaws.com
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - echo Logging in to Amazon ECR...
-      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_PUBLIC_LOGIN
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_LOGIN
 
   build:
     commands:

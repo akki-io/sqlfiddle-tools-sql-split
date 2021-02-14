@@ -25,3 +25,5 @@ COPY bootstrap /var/runtime/bootstrap
 
 RUN chmod 755 -R ${LAMBDA_TASK_ROOT}/ \
     && chmod +x /var/runtime/bootstrap
+
+CMD [ "functions.split" ]
